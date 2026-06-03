@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>香港＆マカオ 3泊4日 旅行プラン</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+  :root{ --red:#b3122a; --gold:#d9a441; --ink:#2b2b2b; --cream:#f8f4ec; --edge:#e6dcc8; }
+  *{ box-sizing:border-box; }
+  body{ font-family:-apple-system,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+    color:var(--ink); line-height:1.6; margin:0; background:#fff; }
+  .wrap{ max-width:920px; margin:0 auto; padding:24px 18px 60px; }
+  h1{ font-size:26px; color:var(--red); margin:0 0 4px; letter-spacing:1px; }
+  .subtitle{ color:#666; font-size:14px; margin-bottom:20px; }
+  h2{ font-size:17px; color:#fff; background:var(--red); padding:7px 12px; border-radius:4px;
+    margin:30px 0 12px; }
+  .lead{ background:var(--cream); border:1px solid var(--edge); border-radius:6px;
+    padding:14px 16px; margin:10px 0; font-size:14px; }
+  .lead ul{ margin:6px 0 0; padding-left:20px; } .lead li{ margin-bottom:4px; }
+  #map{ height:420px; border-radius:8px; border:1px solid var(--edge); z-index:0; background:#e9eef2; }
+  .mapwrap{ position:sticky; top:10px; z-index:5; background:#fff; padding-bottom:6px; }
+  .maphint{ font-size:12px; color:#888; margin:6px 0 0; }
+  table.task{ width:100%; border-collapse:collapse; margin:8px 0 6px; font-size:14px; }
+  table.task th,table.task td{ border:1px solid #ddd; padding:7px 9px; vertical-align:top; }
+  table.task th{ background:#f4ece0; color:#6b4a17; position:sticky; }
+  table.task td.num{ text-align:right; white-space:nowrap; }
+  tr.dayrow td{ background:var(--red); color:#fff; font-weight:700; font-size:14px; }
+  tr.place{ cursor:pointer; }
+  tr.place:hover{ background:#fdf6e7; }
+  tr.place.active{ background:#fbe9c8; }
+  .pinno{ display:inline-block; color:#fff; border-radius:50%; width:21px; height:21px;
+    line-height:21px; text-align:center; font-size:12px; font-weight:700; margin-right:6px; }
+  .tag{ display:inline-block; color:#fff; border-radius:3px; padding:1px 6px; font-size:11px;
+    margin-right:5px; }
+  .tag.bf{background:#e08a3c;} .tag.lu{background:#3c8ca8;} .tag.di{background:#7a4ba8;}
+  .tag.sn{background:#5a9e5a;} .tag.mv{background:#8a8a8a;} .tag.do{background:#2b2b2b;}
+  .rt{ color:#c08a00; font-weight:700; font-size:13px; }
+  .nonplace td:first-child{ color:#777; }
+  .total td{ background:#fbf3df; font-weight:700; }
+  .note{ color:#666; font-size:13px; }
+  table.sum{ width:100%; border-collapse:collapse; margin:8px 0 6px; font-size:14px; }
+  table.sum th,table.sum td{ border:1px solid #ddd; padding:7px 9px; }
+  table.sum th{ background:#f4ece0; color:#6b4a17; text-align:left; }
+  table.sum td.num{ text-align:right; white-space:nowrap; }
+  table.sum tr.grand td{ background:#fbf3df; font-weight:700; }
+  .footer{ font-size:12px; color:#888; margin-top:30px; border-top:1px solid #eee; padding-top:12px; }
+  @media (max-width:600px){
+    .mapwrap{ position:static; }
+    #map{ height:320px; }
+    .wrap{ padding:18px 12px 48px; }
+    table.task, table.sum{ font-size:13px; }
+    table.task th,table.task td,table.sum th,table.sum td{ padding:6px 6px; }
+  }
+  @media print{
+    .mapwrap{ position:static; } #map{ height:340px; } .maphint{ display:none; }
+    h2,tr.dayrow td,.pinno,.tag{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>香港 ＆ マカオ 3泊4日 旅行プラン</h1>
+<div class="subtitle">2人旅・7月平日・羽田発着 ／ 香港2泊＋マカオ1泊 ／ ディズニー＋カジノ ／ 地図つき（OpenStreetMap）</div>
+
+<h2>要点＆メモ</h2>
+<div class="lead">
+<ul>
+<li>香港に2泊、マカオに1泊。荷物の本格移動は「香港→マカオ」の1回だけ。羽田⇄マカオ直行便は無いため香港IN・香港OUT。</li>
+<li><b>食事は昼夜とも1人1万円以内に調整。</b>香港の昼はミシュラン店「利苑酒家」の飲茶、マカオの夜はビブグルマンの老舗ポルトガル料理「António」に。3つ星Robuchonは予算超のため今回は外しています（行きたい場合は下のメモ参照）。為替は 1 HK$ ≒ 1 MOP ≒ 20円。</li>
+<li><b>フェリー：</b>香港・上環 ⇄ マカオ。約60分・30〜60分おき・片道約HK$175。KKday/Klookで事前にQRチケット。コタイ行きはタイパ着の便。</li>
+<li><b>出入境：</b>マカオは香港と別手続きだが日本パスポートは短期ビザ不要。香港ドルはマカオでもほぼ使える。</li>
+<li><b>eSIM：</b>香港・マカオ両対応の4日間で1人1,000〜2,000円。出発前に設定。</li>
+<li><b>カジノ：</b>21歳以上＋パスポート必須。撮影禁止エリア多い。軍資金は「失っても惜しくない額」で。</li>
+<li><b>7月の気候：</b>高温多湿でスコール多め。折りたたみ傘・水分補給を。屋内は冷房が強いので羽織りもの。</li>
+</ul>
+</div>
+
+<h2>地図（タスク表の場所行をクリックすると、ここのピンに飛びます）</h2>
+<div class="mapwrap">
+  <div id="map"></div>
+  <p class="maphint">スマホは「2本指」で地図を動かせます（1本指はページのスクロール）。PCはマウスで操作。ピンの色：<span style="color:#b3122a">●</span>ミシュラン／<span style="color:#d9a441">●</span>食事・間食／<span style="color:#3c8ca8">●</span>観光／<span style="color:#2b2b2b">●</span>拠点・宿・空港。ピンや表の行をクリックで連動します。</p>
+</div>
+
+<h2>訪問順タスク表（予算込み）</h2>
+<table class="task">
+<thead>
+<tr><th style="width:42px;">#</th><th>タスク</th><th>区分</th><th>評価</th><th style="width:90px;">予算/人</th></tr>
+</thead>
+<tbody id="taskbody">
+<tr class="dayrow"><td colspan="5">出発前の準備</td></tr>
+<tr class="nonplace"><td>—</td><td><span class="tag do">予約</span>往復航空券（羽田⇄香港・直行）</td><td>手配</td><td>—</td><td class="num">55,000円</td></tr>
+<tr class="nonplace"><td>—</td><td><span class="tag do">予約</span>香港ホテル2泊（尖沙咀）</td><td>手配</td><td>—</td><td class="num">30,000円</td></tr>
+<tr class="nonplace"><td>—</td><td><span class="tag do">予約</span>マカオホテル1泊（ヴェネチアン）</td><td>手配</td><td>—</td><td class="num">20,000円</td></tr>
+<tr class="nonplace"><td>—</td><td><span class="tag do">予約</span>香港ディズニー1デーチケット</td><td>手配</td><td>—</td><td class="num">15,000円</td></tr>
+<tr class="nonplace"><td>—</td><td><span class="tag do">予約</span>香港⇄マカオ フェリー往復（QR）</td><td>手配</td><td>—</td><td class="num">7,000円</td></tr>
+<tr class="nonplace"><td>—</td><td><span class="tag do">予約</span>利苑酒家ランチ予約／海外旅行保険</td><td>手配</td><td>—</td><td class="num">2,000円</td></tr>
+<tr class="nonplace"><td>—</td><td><span class="tag do">準備</span>eSIM購入・設定</td><td>手配</td><td>—</td><td class="num">1,500円</td></tr>
+
+<tr class="dayrow"><td colspan="5">DAY 1｜香港着 → 尖沙咀（香港泊）</td></tr>
+<tr class="place" data-key="airport_in"><td><span class="pinno" style="background:#2b2b2b">1</span></td><td><span class="tag mv">移動</span>香港国際空港 着 → エアポートExp</td><td>拠点</td><td>—</td><td class="num">2,500円</td></tr>
+<tr class="place" data-key="hotel"><td><span class="pinno" style="background:#2b2b2b">2</span></td><td><span class="tag do">宿</span>尖沙咀のホテルにチェックイン</td><td>拠点</td><td>—</td><td class="num">—</td></tr>
+<tr class="place" data-key="mammy"><td><span class="pinno" style="background:#d9a441">3</span></td><td><span class="tag sn">間食</span>Mammy Pancake（エッグワッフル）</td><td>食事</td><td class="rt">★4.4</td><td class="num">700円</td></tr>
+<tr class="place" data-key="dsb"><td><span class="pinno" style="background:#d9a441">4</span></td><td><span class="tag di">夕</span>Dim Sum Basket 1籠點心</td><td>食事</td><td class="rt">★4.7</td><td class="num">2,200円</td></tr>
+<tr class="place" data-key="star"><td><span class="pinno" style="background:#3c8ca8">5</span></td><td><span class="tag do">観光</span>海沿いで20時の光のショー</td><td>観光</td><td>—</td><td class="num">—</td></tr>
+<tr class="nonplace"><td>—</td><td>朝昼：機内食・到着後の軽食</td><td>食事</td><td>—</td><td class="num">3,000円</td></tr>
+
+<tr class="dayrow"><td colspan="5">DAY 2｜ディズニー → 中環（香港泊）</td></tr>
+<tr class="nonplace"><td>—</td><td><span class="tag bf">朝</span>茶餐廳で菠蘿油＋香港式ミルクティー</td><td>食事</td><td>—</td><td class="num">800円</td></tr>
+<tr class="place" data-key="disney"><td><span class="pinno" style="background:#3c8ca8">6</span></td><td><span class="tag do">観光</span>香港ディズニーランド（昼食＋間食込み）</td><td>観光</td><td class="rt">★4.5</td><td class="num">4,200円</td></tr>
+<tr class="place" data-key="timhowan"><td><span class="pinno" style="background:#b3122a">7</span></td><td><span class="tag di">夕</span>Tim Ho Wan 添好運（ミシュラン点心）</td><td>食事</td><td class="rt">★4.5</td><td class="num">2,500円</td></tr>
+<tr class="place" data-key="messina"><td><span class="pinno" style="background:#d9a441">8</span></td><td><span class="tag sn">間食</span>Gelato Messina（中環）</td><td>食事</td><td class="rt">★4.5</td><td class="num">800円</td></tr>
+
+<tr class="dayrow"><td colspan="5">DAY 3｜中環で名店ランチ → マカオへ移動・世界遺産（マカオ泊）</td></tr>
+<tr class="place" data-key="leigarden"><td><span class="pinno" style="background:#b3122a">9</span></td><td><span class="tag lu">昼</span>利苑酒家 Lei Garden 飲茶ランチ（ミシュラン）</td><td>食事</td><td class="rt">★4.5</td><td class="num">6,500円</td></tr>
+<tr class="place" data-key="pier_out"><td><span class="pinno" style="background:#2b2b2b">10</span></td><td><span class="tag mv">移動</span>上環フェリー乗場 → マカオ</td><td>拠点</td><td>—</td><td class="num">—</td></tr>
+<tr class="place" data-key="senado"><td><span class="pinno" style="background:#3c8ca8">11</span></td><td><span class="tag do">観光</span>セナド広場〜聖ポール天主堂跡</td><td>観光</td><td>—</td><td class="num">—</td></tr>
+<tr class="place" data-key="chuiheong"><td><span class="pinno" style="background:#d9a441">12</span></td><td><span class="tag sn">間食</span>Pastelaria Chui Heong（杏仁餅）</td><td>食事</td><td class="rt">★4.4</td><td class="num">600円</td></tr>
+<tr class="place" data-key="antonio"><td><span class="pinno" style="background:#b3122a">13</span></td><td><span class="tag di">夕</span>António 安東尼奧（ビブグルマン・ポルトガル料理）</td><td>食事</td><td class="rt">★4.6</td><td class="num">8,500円</td></tr>
+<tr class="place" data-key="cotai"><td><span class="pinno" style="background:#2b2b2b">14</span></td><td><span class="tag do">宿</span>ヴェネチアン泊・カジノ</td><td>拠点</td><td class="rt">★4.5</td><td class="num">12,000円</td></tr>
+
+<tr class="dayrow"><td colspan="5">DAY 4｜マカオ → 香港 → 羽田</td></tr>
+<tr class="nonplace"><td>—</td><td><span class="tag bf">朝</span>大利來記（ポークチョップバーガー）</td><td>食事</td><td class="rt">★3.7</td><td class="num">1,000円</td></tr>
+<tr class="place" data-key="lordstow"><td><span class="pinno" style="background:#d9a441">15</span></td><td><span class="tag sn">間食</span>Lord Stow's Bakery（エッグタルト発祥）</td><td>食事</td><td class="rt">★4.5</td><td class="num">600円</td></tr>
+<tr class="place" data-key="pier_back"><td><span class="pinno" style="background:#2b2b2b">16</span></td><td><span class="tag mv">移動</span>フェリーで香港・上環へ（昼食込み）</td><td>拠点</td><td>—</td><td class="num">1,500円</td></tr>
+<tr class="place" data-key="airport_out"><td><span class="pinno" style="background:#2b2b2b">17</span></td><td><span class="tag mv">移動</span>エアポートExpで香港国際空港 → 羽田</td><td>拠点</td><td>—</td><td class="num">—</td></tr>
+
+</tbody>
+</table>
+<p class="note">食事の最高額は昼6,500円・夜8,500円で、いずれも1人1万円以内に収まっています。3つ星Robuchon au Dôme（ランチ約1.5万円）にどうしても行きたい場合は、António（夜8,500円）と利苑（昼6,500円）のどちらかをこれに差し替えてください。その場合は食費総額が約6万円台に上がります。</p>
+
+<h2>費目別の総計（1人あたり）</h2>
+<table class="sum">
+<thead><tr><th>費目</th><th style="width:140px;">金額／人</th><th>内訳メモ</th></tr></thead>
+<tbody>
+<tr><td>航空券（羽田⇄香港 往復）</td><td class="num">55,000円</td><td>7月平日・直行の相場</td></tr>
+<tr><td>宿泊費</td><td class="num">62,000円</td><td>香港2泊30,000＋マカオ1泊20,000＋ヴェネチアン宿泊分12,000</td></tr>
+<tr><td>食費</td><td class="num">46,000円</td><td>朝昼夕＋間食＋機内食等の合計（1人5万円以内に収まる）</td></tr>
+<tr><td>観光・アクティビティ</td><td class="num">19,200円</td><td>ディズニー15,000＋入園後の昼食・間食4,200</td></tr>
+<tr><td>交通（フェリー・空港アクセス・市内）</td><td class="num">16,000円</td><td>フェリー往復7,000＋空港Exp2,500＋市内・往復移動6,500</td></tr>
+<tr><td>通信・保険・予約手数料</td><td class="num">5,500円</td><td>eSIM1,500＋保険・予約2,000＋予備2,000</td></tr>
+<tr><td>お土産・予備費</td><td class="num">8,000円</td><td>—</td></tr>
+<tr class="grand"><td>合計（1人）</td><td class="num">約211,700円</td><td>—</td></tr>
+<tr class="grand"><td>合計（2人）</td><td class="num">約423,400円</td><td>—</td></tr>
+</tbody>
+</table>
+<p class="note">食費は1人46,000円で、ご指定の「5万円以内」に収まっています。さらに抑えたい場合は、利苑の昼を一般の茶餐廳ランチ（約1,500円）に替えると食費が約4万円まで下がります。</p>
+
+<div class="footer">
+※ 価格・営業時間・評価は2026年6月時点の目安。予約・訪問前に最新情報をご確認ください。為替1HK$=1MOP=20円。航空券・ホテルは7月平日の相場で実際の予約額により変動。地図 © OpenStreetMap contributors。
+</div>
+
+</div>
+
+<script>
+const P = {
+  airport_in: {ll:[22.3080,113.9185], name:"香港国際空港(到着)", kind:"hub", note:"DAY1 到着"},
+  hotel:   {ll:[22.2955,114.1722], name:"ホテル(尖沙咀)", kind:"hub", note:"DAY1-2 拠点"},
+  mammy:   {ll:[22.2938,114.1687], name:"Mammy Pancake ★4.4", kind:"food", note:"DAY1 間食・エッグワッフル"},
+  dsb:     {ll:[22.2991,114.1745], name:"Dim Sum Basket ★4.7", kind:"food", note:"DAY1 夕食・点心"},
+  star:    {ll:[22.2934,114.1722], name:"海沿い 光のショー(20時)", kind:"see", note:"DAY1 夜"},
+  disney:  {ll:[22.3130,114.0413], name:"香港ディズニーランド ★4.5", kind:"see", note:"DAY2"},
+  timhowan:{ll:[22.2845,114.1581], name:"Tim Ho Wan 添好運 ★4.5", kind:"mich", note:"DAY2 夕食・ミシュラン点心"},
+  messina: {ll:[22.2821,114.1547], name:"Gelato Messina ★4.5", kind:"food", note:"DAY2 間食・ジェラート"},
+  leigarden:{ll:[22.2854,114.1588], name:"利苑酒家 Lei Garden ★4.5", kind:"mich", note:"DAY3 昼食・ミシュラン飲茶"},
+  pier_out:{ll:[22.2884,114.1520], name:"上環フェリーターミナル(往路)", kind:"hub", note:"DAY3 マカオへ"},
+  senado:  {ll:[22.1937,113.5400], name:"セナド広場〜聖ポール天主堂跡", kind:"see", note:"DAY3 世界遺産"},
+  chuiheong:{ll:[22.1937,113.5371], name:"Pastelaria Chui Heong ★4.4", kind:"food", note:"DAY3 間食・杏仁餅"},
+  antonio: {ll:[22.1567,113.5573], name:"António 安東尼奧 ★4.6", kind:"mich", note:"DAY3 夕食・ポルトガル料理(ビブグルマン)"},
+  cotai:   {ll:[22.1470,113.5598], name:"ヴェネチアン(コタイ) ★4.5", kind:"hub", note:"DAY3 宿泊・カジノ"},
+  lordstow:{ll:[22.1183,113.5511], name:"Lord Stow's Bakery ★4.5", kind:"food", note:"DAY4 間食・エッグタルト発祥"},
+  pier_back:{ll:[22.2884,114.1520], name:"上環フェリーターミナル(復路)", kind:"hub", note:"DAY4 香港へ"},
+  airport_out:{ll:[22.3080,113.9185], name:"香港国際空港(出発)", kind:"hub", note:"DAY4 帰国"},
+};
+const COLORS = {mich:"#b3122a", food:"#d9a441", see:"#3c8ca8", hub:"#2b2b2b"};
+const PINNO = {airport_in:1, hotel:2, mammy:3, dsb:4, star:5, disney:6, timhowan:7,
+  messina:8, leigarden:9, pier_out:10, senado:11, chuiheong:12, antonio:13, cotai:14,
+  lordstow:15, pier_back:16, airport_out:17};
+
+window.addEventListener('load', ()=>{
+  const isTouch = window.matchMedia('(pointer:coarse)').matches;
+  const map = L.map('map', { scrollWheelZoom:false, tap:false });
+  if(isTouch && map.dragging){ map.dragging.disable(); }
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+    {maxZoom:19, attribution:'© OpenStreetMap contributors'}).addTo(map);
+
+  const markers = {};
+  const bounds = [];
+  Object.keys(P).forEach(k=>{
+    const p = P[k];
+    const m = L.marker(p.ll, {icon: L.divIcon({className:'',
+      html:'<div style="background:'+COLORS[p.kind]+';color:#fff;border:2px solid #fff;'
+        +'border-radius:50%;width:24px;height:24px;line-height:21px;text-align:center;'
+        +'font-size:12px;font-weight:700;box-shadow:0 1px 3px rgba(0,0,0,.45)">'+PINNO[k]+'</div>',
+      iconSize:[24,24], iconAnchor:[12,12]})}).addTo(map);
+    m.bindPopup("<b>"+PINNO[k]+". "+p.name+"</b><br>"+p.note);
+    markers[k] = m;
+    bounds.push(p.ll);
+  });
+  map.fitBounds(L.latLngBounds(bounds).pad(0.08));
+  setTimeout(()=>map.invalidateSize(), 300);
+
+  function focusKey(k){
+    const m = markers[k]; if(!m) return;
+    map.flyTo(P[k].ll, 15, {duration:0.6});
+    m.openPopup();
+    document.querySelectorAll('tr.place.active').forEach(r=>r.classList.remove('active'));
+    document.querySelectorAll('tr.place[data-key="'+k+'"]').forEach(r=>r.classList.add('active'));
+    if(window.matchMedia('(max-width:600px)').matches){
+      document.getElementById('map').scrollIntoView({behavior:'smooth', block:'start'});
+    }
+  }
+  document.querySelectorAll('tr.place').forEach(row=>{
+    row.addEventListener('click', ()=>focusKey(row.getAttribute('data-key')));
+  });
+  Object.keys(markers).forEach(k=>{
+    markers[k].on('click', ()=>{
+      document.querySelectorAll('tr.place.active').forEach(r=>r.classList.remove('active'));
+      const row = document.querySelector('tr.place[data-key="'+k+'"]');
+      if(row){ row.classList.add('active'); row.scrollIntoView({behavior:'smooth', block:'center'}); }
+    });
+  });
+});
+</script>
+</body>
+</html>
