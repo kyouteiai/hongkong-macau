@@ -73,6 +73,7 @@
 <div class="tabs">
   <button class="tab active" data-target="page-plan">旅行プラン</button>
   <button class="tab" data-target="page-food">グルメリスト</button>
+  <button class="tab" data-target="page-sight">観光地</button>
 </div>
 
 <!-- ===================== PAGE 1: 旅行プラン ===================== -->
@@ -267,8 +268,98 @@
 </div>
 </div>
 
+<!-- ===================== PAGE 3: 観光地 ===================== -->
+<div class="page" id="page-sight">
+<div class="wrap">
+
+<h1>観光地リスト</h1>
+<div class="subtitle">香港＆マカオ ／ 定番の見どころをエリア別に ／ 地図つき</div>
+
+<div class="lead">
+本旅程の動線（尖沙咀・中環・上環・ランタオ／マカオ半島・コタイ）から行きやすい定番観光地をまとめました。<span style="color:#3c8ca8">●</span>＝香港、<span style="color:#7a4ba8">●</span>＝マカオ。<b>★</b>は本旅程にすでに組み込み済みのスポットです。
+</div>
+
+<h2>地図（表の行をクリックでピンに飛びます）</h2>
+<div class="mapwrap">
+  <div class="map" id="map3"></div>
+  <p class="maphint">ピンの色：<span style="color:#3c8ca8">●</span>香港／<span style="color:#7a4ba8">●</span>マカオ。ピンや表の行をクリックで連動します。</p>
+</div>
+
+<h2>① 香港</h2>
+
+<h3>尖沙咀・ビクトリア湾エリア</h3>
+<table>
+<thead><tr><th style="width:42px;">#</th><th style="width:170px;">スポット</th><th style="width:80px;">エリア</th><th>メモ</th></tr></thead>
+<tbody>
+<tr class="place" data-key="promenade"><td><span class="pinno" style="background:#3c8ca8">1</span></td><td class="name">海濱長廊・星光大道 ★</td><td class="area">尖沙咀</td><td>毎晩20時の光のショー「シンフォニー・オブ・ライツ」。対岸・香港島の摩天楼の夜景が主役。</td></tr>
+<tr class="place" data-key="starferry"><td><span class="pinno" style="background:#3c8ca8">2</span></td><td class="name">スターフェリー 天星小輪</td><td class="area">尖沙咀⇄中環</td><td>100年以上続く名物フェリー。数分・格安でビクトリア湾を横断、移動兼観光に最適。</td></tr>
+</tbody>
+</table>
+
+<h3>中環・上環エリア</h3>
+<table>
+<thead><tr><th style="width:42px;">#</th><th style="width:170px;">スポット</th><th style="width:80px;">エリア</th><th>メモ</th></tr></thead>
+<tbody>
+<tr class="place" data-key="peak"><td><span class="pinno" style="background:#3c8ca8">3</span></td><td class="name">ビクトリア・ピーク 太平山頂</td><td class="area">中環</td><td>香港随一の絶景。中環からピークトラムで山頂へ。昼景も夜景も。</td></tr>
+<tr class="place" data-key="manmo"><td><span class="pinno" style="background:#3c8ca8">4</span></td><td class="name">文武廟 Man Mo Temple</td><td class="area">上環</td><td>渦巻き線香が吊るされた歴史ある道教寺院。フェリー乗場・利苑からも近い。</td></tr>
+<tr class="place" data-key="escalator"><td><span class="pinno" style="background:#3c8ca8">5</span></td><td class="name">ミッドレベル・エスカレーター</td><td class="area">中環</td><td>世界最長の屋外エスカレーター。SOHOのカフェ・バー街へ。</td></tr>
+<tr class="place" data-key="taikwun"><td><span class="pinno" style="background:#3c8ca8">6</span></td><td class="name">大館 Tai Kwun</td><td class="area">中環</td><td>旧警察署・刑務所を再生した文化複合施設。歴史建築＋現代アート＋飲食。</td></tr>
+</tbody>
+</table>
+
+<h3>ランタオ島（ディズニー・空港側）</h3>
+<table>
+<thead><tr><th style="width:42px;">#</th><th style="width:170px;">スポット</th><th style="width:80px;">エリア</th><th>メモ</th></tr></thead>
+<tbody>
+<tr class="place" data-key="disneyT"><td><span class="pinno" style="background:#3c8ca8">7</span></td><td class="name">香港ディズニーランド ★</td><td class="area">ランタオ</td><td>DAY2に終日。直営ホテル泊で朝から効率よく回れる。</td></tr>
+<tr class="place" data-key="bigbuddha"><td><span class="pinno" style="background:#3c8ca8">8</span></td><td class="name">天壇大佛・昂坪360・寶蓮禪寺</td><td class="area">ランタオ</td><td>巨大な青銅の大仏とロープウェイ。ディズニー・空港と同じランタオ島。時間が取れる日に。</td></tr>
+</tbody>
+</table>
+
+<h3>九龍 その他（夜市・寺院）</h3>
+<table>
+<thead><tr><th style="width:42px;">#</th><th style="width:170px;">スポット</th><th style="width:80px;">エリア</th><th>メモ</th></tr></thead>
+<tbody>
+<tr class="place" data-key="temple_st"><td><span class="pinno" style="background:#3c8ca8">9</span></td><td class="name">廟街ナイトマーケット</td><td class="area">油麻地</td><td>香港らしい夜の屋台街。海鮮・占い・カラオケ。尖沙咀から徒歩〜1駅。</td></tr>
+<tr class="place" data-key="ladies"><td><span class="pinno" style="background:#3c8ca8">10</span></td><td class="name">女人街（通菜街）</td><td class="area">旺角</td><td>雑貨・土産の露店がずらり。値段交渉も楽しい買い物ストリート。</td></tr>
+<tr class="place" data-key="wongtaisin"><td><span class="pinno" style="background:#3c8ca8">11</span></td><td class="name">黄大仙廟 Wong Tai Sin</td><td class="area">黄大仙</td><td>「願いが何でも叶う」と人気の道教寺院。色鮮やかで写真映え。</td></tr>
+</tbody>
+</table>
+
+<h2>② マカオ</h2>
+
+<h3>マカオ半島（世界遺産）</h3>
+<table>
+<thead><tr><th style="width:42px;">#</th><th style="width:170px;">スポット</th><th style="width:90px;">エリア</th><th>メモ</th></tr></thead>
+<tbody>
+<tr class="place" data-key="stpaul"><td><span class="pinno" style="background:#7a4ba8">12</span></td><td class="name">聖ポール天主堂跡 大三巴 ★</td><td class="area">セナド北</td><td>マカオの象徴。ファサードだけが残る世界遺産。DAY3に訪問。</td></tr>
+<tr class="place" data-key="senadoT"><td><span class="pinno" style="background:#7a4ba8">13</span></td><td class="name">セナド広場 ★</td><td class="area">半島中心</td><td>波模様の石畳とパステルの洋館。世界遺産さんぽの起点。DAY3に訪問。</td></tr>
+<tr class="place" data-key="monte"><td><span class="pinno" style="background:#7a4ba8">14</span></td><td class="name">モンテの砦 大砲台</td><td class="area">セナド北</td><td>大三巴のすぐ隣の丘。大砲と市街パノラマ。マカオ博物館併設。</td></tr>
+<tr class="place" data-key="ama"><td><span class="pinno" style="background:#7a4ba8">15</span></td><td class="name">媽閣廟 A-Ma Temple</td><td class="area">半島南</td><td>マカオ最古の寺院で世界遺産。「マカオ」の地名の由来とも。</td></tr>
+<tr class="place" data-key="mactower"><td><span class="pinno" style="background:#7a4ba8">16</span></td><td class="name">マカオタワー</td><td class="area">半島南</td><td>展望台＋世界最高級のバンジー。タイパ・コタイの夜景も一望。</td></tr>
+</tbody>
+</table>
+
+<h3>コタイ・タイパ・コロアン</h3>
+<table>
+<thead><tr><th style="width:42px;">#</th><th style="width:170px;">スポット</th><th style="width:70px;">エリア</th><th>メモ</th></tr></thead>
+<tbody>
+<tr class="place" data-key="venetianT"><td><span class="pinno" style="background:#7a4ba8">17</span></td><td class="name">ザ・ヴェネチアン ★</td><td class="area">コタイ</td><td>運河とゴンドラの巨大リゾート。DAY3の宿。館内さんぽだけでも見応え。</td></tr>
+<tr class="place" data-key="parisian"><td><span class="pinno" style="background:#7a4ba8">18</span></td><td class="name">パリジャン（エッフェル塔）</td><td class="area">コタイ</td><td>約半分サイズのエッフェル塔。夜のライトアップが人気。ヴェネチアン隣。</td></tr>
+<tr class="place" data-key="taipaVil"><td><span class="pinno" style="background:#7a4ba8">19</span></td><td class="name">タイパ・ヴィレッジ 官也街</td><td class="area">タイパ</td><td>パステルの旧市街＋食べ歩き通り。ポルトガル建築と土産店が密集。</td></tr>
+<tr class="place" data-key="coloane"><td><span class="pinno" style="background:#7a4ba8">20</span></td><td class="name">コロアン・ヴィレッジ</td><td class="area">コロアン</td><td>のどかな漁村風の旧市街。聖フランシスコ・ザビエル教会、Lord Stow's発祥店。</td></tr>
+</tbody>
+</table>
+
+<div class="footer">
+※ 所在・営業・公開状況は2026年6月時点の目安。訪問前に最新情報をご確認ください。★は本旅程に組み込み済みのスポット。地図 © OpenStreetMap contributors。
+</div>
+
+</div>
+</div>
+
 <script>
-const COLORS = {mich:"#b3122a", food:"#d9a441", see:"#3c8ca8", hub:"#2b2b2b", bib:"#b3122a", snack:"#d9a441"};
+const COLORS = {mich:"#b3122a", food:"#d9a441", see:"#3c8ca8", hub:"#2b2b2b", bib:"#b3122a", snack:"#d9a441", hk:"#3c8ca8", mo:"#7a4ba8"};
 
 // ---- PAGE 1 data ----
 const P = {
@@ -323,6 +414,34 @@ const FPINNO = {chk:1, dtf_tst:2, tck:3, kaukee:4, kwankee:5, chiuka:6, sangkee:
   mammyS:14, taicheong:15, lanfong:16, kamwah:17, kungwo:18,
   choiheongS:19, lordstowS:20, cunha:21, taileiS:22};
 
+// ---- PAGE 3 data (観光地) ----
+const TP = {
+  promenade: {ll:[22.2936,114.1726], name:"海濱長廊・星光大道", kind:"hk", note:"尖沙咀・20時の光のショー"},
+  starferry: {ll:[22.2937,114.1685], name:"スターフェリー", kind:"hk", note:"尖沙咀⇄中環の名物フェリー"},
+  peak:      {ll:[22.2759,114.1455], name:"ビクトリア・ピーク 太平山頂", kind:"hk", note:"中環からピークトラム／絶景"},
+  manmo:     {ll:[22.2841,114.1500], name:"文武廟 Man Mo Temple", kind:"hk", note:"上環・道教寺院"},
+  escalator: {ll:[22.2822,114.1547], name:"ミッドレベル・エスカレーター", kind:"hk", note:"中環・SOHOへ"},
+  taikwun:   {ll:[22.2810,114.1542], name:"大館 Tai Kwun", kind:"hk", note:"中環・旧警察署の文化施設"},
+  disneyT:   {ll:[22.3130,114.0413], name:"香港ディズニーランド", kind:"hk", note:"ランタオ・DAY2"},
+  bigbuddha: {ll:[22.2540,113.9050], name:"天壇大佛・昂坪360・寶蓮禪寺", kind:"hk", note:"ランタオ・大仏とロープウェイ"},
+  temple_st: {ll:[22.3055,114.1700], name:"廟街ナイトマーケット", kind:"hk", note:"油麻地・夜の屋台街"},
+  ladies:    {ll:[22.3190,114.1702], name:"女人街（通菜街）", kind:"hk", note:"旺角・買い物ストリート"},
+  wongtaisin:{ll:[22.3417,114.1934], name:"黄大仙廟 Wong Tai Sin", kind:"hk", note:"黄大仙・人気の道教寺院"},
+  stpaul:    {ll:[22.1976,113.5407], name:"聖ポール天主堂跡 大三巴", kind:"mo", note:"世界遺産・DAY3"},
+  senadoT:   {ll:[22.1937,113.5400], name:"セナド広場", kind:"mo", note:"世界遺産・DAY3"},
+  monte:     {ll:[22.1980,113.5421], name:"モンテの砦 大砲台", kind:"mo", note:"大三巴隣・市街パノラマ"},
+  ama:       {ll:[22.1862,113.5310], name:"媽閣廟 A-Ma Temple", kind:"mo", note:"半島南・マカオ最古の寺院"},
+  mactower:  {ll:[22.1797,113.5378], name:"マカオタワー", kind:"mo", note:"半島南・展望台/バンジー"},
+  venetianT: {ll:[22.1466,113.5610], name:"ザ・ヴェネチアン", kind:"mo", note:"コタイ・DAY3の宿"},
+  parisian:  {ll:[22.1452,113.5635], name:"パリジャン（エッフェル塔）", kind:"mo", note:"コタイ・夜のライトアップ"},
+  taipaVil:  {ll:[22.1556,113.5562], name:"タイパ・ヴィレッジ 官也街", kind:"mo", note:"タイパ・旧市街と食べ歩き"},
+  coloane:   {ll:[22.1230,113.5560], name:"コロアン・ヴィレッジ", kind:"mo", note:"コロアン・漁村風の旧市街"},
+};
+const TPINNO = {promenade:1, starferry:2, peak:3, manmo:4, escalator:5, taikwun:6,
+  disneyT:7, bigbuddha:8, temple_st:9, ladies:10, wongtaisin:11,
+  stpaul:12, senadoT:13, monte:14, ama:15, mactower:16,
+  venetianT:17, parisian:18, taipaVil:19, coloane:20};
+
 function buildMap(mapId, data, pinno, pageId){
   const isTouch = window.matchMedia('(pointer:coarse)').matches;
   const map = L.map(mapId, { scrollWheelZoom:false, tap:false });
@@ -372,6 +491,8 @@ function buildMap(mapId, data, pinno, pageId){
 window.addEventListener('load', ()=>{
   const plan = buildMap('map', P, PINNO, 'page-plan');
   const food = buildMap('map2', FP, FPINNO, 'page-food');
+  const sight = buildMap('map3', TP, TPINNO, 'page-sight');
+  const maps = {'page-plan':plan, 'page-food':food, 'page-sight':sight};
   setTimeout(()=>plan.refit(), 300);
 
   document.querySelectorAll('.tab').forEach(t=>{
@@ -382,7 +503,7 @@ window.addEventListener('load', ()=>{
       const id = t.getAttribute('data-target');
       document.getElementById(id).classList.add('active');
       window.scrollTo({top:0});
-      setTimeout(()=>{ (id==='page-food' ? food : plan).refit(); }, 60);
+      setTimeout(()=>{ maps[id].refit(); }, 60);
     });
   });
 });
